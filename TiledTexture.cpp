@@ -4,7 +4,7 @@
 
 /*
 	This constructor creates default Tiles (32x32).
-	Remember to use overrided Render method in this class If you won't do you will get whole texture on screen.
+	Remember to use overrided Render method in this class If you won't do that you will get whole texture on screen.
 */
 TiledTexture::TiledTexture(std::string path) : Texture(path, 0, 0){
 	createClips();
@@ -16,7 +16,7 @@ TiledTexture::TiledTexture(std::string path) : Texture(path, 0, 0){
 /*
 	This constructor allows you to create custom clips.
 	Remember that width, height should be the same as rowSize and columnSize.
-	Remember to use overrided Render method in this class If you won't do you will get whole texture on screen.
+	Remember to use overrided Render method in this class If you won't do that you will get whole texture on screen.
 */
 TiledTexture::TiledTexture(std::string path, int rowSize, int columnSize, int width, int height) : Texture(path, 0, 0){
 	createClips(rowSize, columnSize, width, height);
@@ -57,7 +57,7 @@ void TiledTexture::render(int id){
 */
 
 /*
-	If tile doesn't exist It returns tile with id 0 and print error to console.
+	If tile doesn't exist It returns tile with id 0 and prints error to console.
 */
 const SDL_Rect* TiledTexture::getTile(int id){
 	if (id < tiles.size())

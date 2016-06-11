@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include <iostream>
 /*
 	This class is a abstract class, framework uses "Screen/State" system.

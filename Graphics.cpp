@@ -1,8 +1,3 @@
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_mixer.h>
-#include <SDL_ttf.h>
-
 #include "Graphics.h"
 
 #include <iostream>
@@ -53,6 +48,9 @@ bool Graphics::initializeSDL()
                 else if(TTF_Init() == -1)
                 {
                     std::cout << "Can't initialize TTF" << std::endl;
+                    somethingFailed = true;
+                }else if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0){
+                    std::cout << "Can't initialize Mixer" << std::endl;
                     somethingFailed = true;
                 }
             }

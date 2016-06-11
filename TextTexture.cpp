@@ -1,7 +1,7 @@
 #include "TextTexture.h"
 
 #include <iostream>
-
+/*
 TextTexture::TextTexture()
 {
 }
@@ -66,3 +66,4 @@ void TextTexture::fontChangeColor(int colorR, int colorG, int colorB)
 	fontColor = { colorR, colorG, colorB };
 	fontCreate();
 }
+*/

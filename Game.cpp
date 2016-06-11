@@ -2,6 +2,7 @@
 #include "Texture.h"
 #include "TiledTexture.h"
 #include "Button.h"
+#include "Sound.h"
 
 #include <iostream>
 #include <string>
@@ -67,6 +68,11 @@ void Game::closeGame() {
 	Getters and Setters.
 */
 
+
+/*
+	TODO:
+	This method also should call cleaning method from Screen.
+*/
 void Game::setScreen(Screen* screen){
 	activeScreen = screen;
 	std::cout << "Changed screen to:" << activeScreen->getName() << "(" << screen->getName() << ")" << std::endl;
@@ -75,13 +81,11 @@ void Game::setScreen(Screen* screen){
 
 /*
 	Left here for testing pursposes.
-
+*/
 
 int main() {
 	Game game;
-	game.setScreen(Screen());
+	game.setScreen(new Screen());
 	game.startGame();
 	return 0;
 }
-
-*/
