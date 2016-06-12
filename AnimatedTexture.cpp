@@ -1,0 +1,2 @@
+#include "AnimatedTexture.h"
+

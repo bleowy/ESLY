@@ -14,7 +14,9 @@ Texture::Texture(std::string path, int x, int y) : engineRenderer(Game::graphics
 		textureRect.y = y;
 	}
 }
-
+/*
+	This constructor is for classes that inherit from Texture.
+*/
 Texture::Texture(int x, int y) : engineRenderer(Game::graphics.getRenderer()){
 	textureRect.x = x;
 	textureRect.y = y;
