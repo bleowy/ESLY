@@ -15,9 +15,11 @@ protected:
 	virtual void load(std::string);
 public:
 	Texture(std::string path, int, int);
+	Texture(int, int);
 	virtual ~Texture();
 	virtual void render();
-	
+	void remove();
+
 	/*
 	GETTERS AND SETTERS
 	*/

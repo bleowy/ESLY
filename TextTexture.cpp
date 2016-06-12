@@ -1,9 +1,11 @@
 #include "TextTexture.h"
+#include "Game.h"
 
-#include <iostream>
-/*
-TextTexture::TextTexture()
+TextTexture::TextTexture(std::string path, std::string text, int size, int x, int y, int colorR, int colorG, int colorB) : Texture(path, x, y), path(path), text(text), size(size)
 {
+	color = {colorR, colorG, colorB, 1};
+	load();
+	create();
 }
 
 
@@ -11,17 +13,17 @@ TextTexture::~TextTexture()
 {
 }
 
-void TextTexture::fontCreate()
+void TextTexture::create()
 {
-	textureRemove();
+	remove();
 
-	SDL_Surface* textSurface = TTF_RenderText_Solid(font, fontText.c_str(), fontColor);
+	SDL_Surface* textSurface = TTF_RenderText_Solid(font, text.c_str(), color);
 	if (textSurface == NULL)
 		printf("An error occured while creating a textSurface\n");
 	else
 	{
-		textureContainer = SDL_CreateTextureFromSurface(textureRenderer, textSurface);
-		if (textureContainer == NULL)
+		texture = SDL_CreateTextureFromSurface(engineRenderer, textSurface);
+		if (texture == NULL)
 			printf("Can't create texture for text.\n");
 		else
 		{
@@ -32,38 +34,37 @@ void TextTexture::fontCreate()
 	}
 }
 
-void TextTexture::fontLoad()
+void TextTexture::load()
 {
-	font = TTF_OpenFont(fontPath.c_str(), fontSize);
+	font = TTF_OpenFont(path.c_str(), size);
 	if (font == NULL)
 	{
-		printf("Failed to load font, from directory: %s\n", fontPath.c_str());
+		printf("Failed to load font, from directory: %s\n", path.c_str());
 	}
 }
 
-void TextTexture::fontChangeText(std::string fontText)
+void TextTexture::setText(std::string text)
 {
-	this->fontText = fontText;
-	fontCreate();
+	this->text = text;
+	create();
 }
 
 //Here might be a memory leak.
-void TextTexture::fontChange(std::string fontPath)
+void TextTexture::setFont(std::string path)
 {
-	this->fontPath = fontPath;
-	fontLoad();
-	fontCreate();
+	this->path = path;
+	load();
+	create();
 }
 
-void TextTexture::fontChangeSize(int)
+void TextTexture::setSize(int size)
 {
-	this->fontSize = fontSize;
-	fontCreate();
+	this->size = size;
+	create();
 }
 
-void TextTexture::fontChangeColor(int colorR, int colorG, int colorB)
+void TextTexture::setColor(int colorR, int colorG, int colorB)
 {
-	fontColor = { colorR, colorG, colorB };
-	fontCreate();
+	color = { colorR, colorG, colorB };
+	create();
 }
-*/

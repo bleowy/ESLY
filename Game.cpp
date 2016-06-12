@@ -3,6 +3,7 @@
 #include "TiledTexture.h"
 #include "Button.h"
 #include "Sound.h"
+#include "TextTexture.h"
 
 #include <iostream>
 #include <string>
@@ -29,11 +30,13 @@ Game::~Game(){
 */
 
 void Game::loop(){
+	TextTexture text("Assets/Fonts/pixelmix.ttf", "Jebac maciuszka dziekuje pozdrawiam", 12, 150, 150);
 	while (!isClosed) {
 		listenForEvent();
 		
 		activeScreen -> update();
 		graphics.startDrawing();
+		text.render();
 		activeScreen -> render();
 		graphics.endDrawing();
 	}

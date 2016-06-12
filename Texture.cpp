@@ -15,10 +15,14 @@ Texture::Texture(std::string path, int x, int y) : engineRenderer(Game::graphics
 	}
 }
 
+Texture::Texture(int x, int y) : engineRenderer(Game::graphics.getRenderer()){
+	textureRect.x = x;
+	textureRect.y = y;
+}
+
 Texture::~Texture()
 {
-	SDL_DestroyTexture(texture);
-	texture = NULL;
+	remove();
 }
 
 void Texture::load(std::string path)
@@ -39,13 +43,20 @@ void Texture::load(std::string path)
 	}
 }
 
+/*
+	Texture Remove
+*/
+
+void Texture::remove(){
+	SDL_DestroyTexture(texture);
+	texture = NULL;
+}
 
 /*
 	Render related
 */
 
-void Texture::render()
-{
+void Texture::render(){
 	SDL_RenderCopy(engineRenderer, texture, NULL, &textureRect);
 }
 
@@ -54,18 +65,15 @@ void Texture::render()
 	Getters
 */
 
-int Texture::getWidth()
-{
+int Texture::getWidth(){
 	return textureRect.w;
 }
 
-int Texture::getHeight()
-{
+int Texture::getHeight(){
 	return textureRect.h;
 }
 
-const SDL_Rect* Texture::getTextureRect()
-{
+const SDL_Rect* Texture::getTextureRect(){
 	return &textureRect;
 }
 
@@ -77,23 +85,19 @@ SDL_Texture* Texture::getTexture(){
 	Setters
 */
 
-void Texture::setHeight(int height)
-{
+void Texture::setHeight(int height){
 	textureRect.h = height;
 }
 
-void Texture::setWidth(int width)
-{
+void Texture::setWidth(int width){
 	textureRect.w = width;
 }
 
-void Texture::setX(int x)
-{
+void Texture::setX(int x){
 	textureRect.x = x;
 }
 
-void Texture::setY(int y)
-{
+void Texture::setY(int y){
 	textureRect.y = y;
 }
 

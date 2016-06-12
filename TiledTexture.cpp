@@ -44,6 +44,7 @@ void TiledTexture::createClips(int rowSize, int columnSize, int width, int heigh
 	}
 	//std::cout << "Prepared:" << tile.size() <<"(" << tile.size() - 1 << ")" << "clips." << std::endl;
 }
+
 /*
 	If you want to render something from TiledTexture you have to know Id of a tile.
 	Check createClips() to see how they are indexed or use MapEditor.
