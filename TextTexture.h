@@ -15,7 +15,7 @@ private:
 	std::string text;
 	std::string path;
 	int size;
-	void load();
+	virtual void load();
 	void create();
 public:
 	TextTexture(std::string, std::string, int = 12, int = 0, int = 0, int = 255, int = 0, int = 255);

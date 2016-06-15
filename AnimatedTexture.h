@@ -2,9 +2,19 @@
 
 #include <SDL2/SDL.h>
 
-#include "Texture.h"
+#include "TiledTexture.h"
 
-class AnimatedTexture : public Texture{
+class AnimatedTexture : public TiledTexture{
 private:
-	void load(std::string);
+	struct AnimationFrame
+	{
+		AnimationFrame(int width, int height, int number) : width(width), height(height), number(number), currentFrame(0){}
+		int width, height, number, currentFrame;
+		SDL_Rect clips[]; // It storage x and y for every frame.
+	};
+	AnimationFrame frame;
+public:
+	AnimatedTexture(std::string, int, int, int);
+	void update();
+	void render();
 };

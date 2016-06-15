@@ -8,7 +8,7 @@
 
 class TiledTexture : public Texture
 {
-private:
+protected:
 	std::vector<SDL_Rect> tiles;
 
 	void createClips(int = 32, int = 32, int = 32, int = 32);

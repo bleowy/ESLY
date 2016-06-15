@@ -1,10 +1,10 @@
 #include "TextTexture.h"
 #include "Game.h"
 
-TextTexture::TextTexture(std::string path, std::string text, int size, int x, int y, int colorR, int colorG, int colorB) : Texture(path, x, y), path(path), text(text), size(size)
+TextTexture::TextTexture(std::string path, std::string text, int size, int x, int y, int colorR, int colorG, int colorB) : Texture(x, y), path(path), text(text), size(size)
 {
 	color = {colorR, colorG, colorB, 1};
-	load();
+	this->load();
 	create();
 }
 

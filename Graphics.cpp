@@ -29,7 +29,7 @@ bool Graphics::initializeSDL()
             somethingFailed = true;
         }
         else
-            graphicsRenderer = SDL_CreateRenderer(graphicsWindow, -1, SDL_RENDERER_ACCELERATED);
+            graphicsRenderer = SDL_CreateRenderer(graphicsWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
             if(graphicsRenderer == NULL)
             {
                 std::cout << "Can't create renderer" << std::endl;

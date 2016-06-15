@@ -3,7 +3,7 @@
 #include "TiledTexture.h"
 #include "Button.h"
 #include "Sound.h"
-#include "TextTexture.h"
+#include "AnimatedTexture.h"
 
 #include <iostream>
 #include <string>
@@ -30,13 +30,14 @@ Game::~Game(){
 */
 
 void Game::loop(){
-	TextTexture text("Assets/Fonts/pixelmix.ttf", "Jebac maciuszka dziekuje pozdrawiam", 12, 150, 150);
+	AnimatedTexture animation("Assets/Animations/campfire.png", 64, 64, 5);
 	while (!isClosed) {
 		listenForEvent();
 		
 		activeScreen -> update();
+		animation.update();
 		graphics.startDrawing();
-		text.render();
+		animation.render();
 		activeScreen -> render();
 		graphics.endDrawing();
 	}

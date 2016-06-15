@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<animations>
+	<animation id="1" name="campfire" path="Textures/Animations/campfire.png" frame_width="64" frame_height="64" frame_number="5"></animation>
+</animations>
