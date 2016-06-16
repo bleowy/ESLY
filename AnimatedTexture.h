@@ -8,13 +8,17 @@ class AnimatedTexture : public TiledTexture{
 private:
 	struct AnimationFrame
 	{
-		AnimationFrame(int width, int height, int number) : width(width), height(height), number(number), currentFrame(0){}
-		int width, height, number, currentFrame;
+		AnimationFrame(int width, int height, int number, int speed) : width(width), height(height), number(number), speed(speed), currentFrame(0){}
+		int width, height, number, currentFrame, speed;
 		SDL_Rect clips[]; // It storage x and y for every frame.
 	};
 	AnimationFrame frame;
 public:
-	AnimatedTexture(std::string, int, int, int);
+	AnimatedTexture(std::string, int, int, int, int);
+	void setSpeed(int);
+	void stop();
+	void pause();
+	void play();
 	void update();
 	void render();
 };

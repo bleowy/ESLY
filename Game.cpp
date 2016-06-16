@@ -30,7 +30,9 @@ Game::~Game(){
 */
 
 void Game::loop(){
-	AnimatedTexture animation("Assets/Animations/campfire.png", 64, 64, 5);
+	AnimatedTexture animation("Assets/Animations/campfire.png", 64, 64, 5, 5);
+	Sound sound("sound.mp3");
+	sound.play();
 	while (!isClosed) {
 		listenForEvent();
 		
