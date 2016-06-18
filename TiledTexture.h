@@ -11,10 +11,10 @@ class TiledTexture : public Texture
 protected:
 	std::vector<SDL_Rect> tiles;
 
-	void createClips(int = 32, int = 32, int = 32, int = 32);
+	void createClips(int = 32, int = 32);
 public:
 	TiledTexture(std::string);
-	TiledTexture(std::string, int, int, int, int);
+	TiledTexture(std::string, int, int);
 	~TiledTexture();
 	
 	void render(int);

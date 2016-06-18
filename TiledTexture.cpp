@@ -18,8 +18,8 @@ TiledTexture::TiledTexture(std::string path) : Texture(path, 0, 0){
 	Remember that width, height should be the same as rowSize and columnSize.
 	Remember to use overrided Render method in this class If you won't do that you will get whole texture on screen.
 */
-TiledTexture::TiledTexture(std::string path, int rowSize, int columnSize, int width, int height) : Texture(path, 0, 0){
-	createClips(rowSize, columnSize, width, height);
+TiledTexture::TiledTexture(std::string path, int width, int height) : Texture(path, 0, 0){
+	createClips(width, height);
 	textureRect.w = width;
 	textureRect.h = height;
 }
@@ -31,18 +31,16 @@ TiledTexture::~TiledTexture()
 
 /*
 	This method creates clip for every tile.
-	int rowSize, int columnSize, int width, int height
 */
-void TiledTexture::createClips(int rowSize, int columnSize, int width, int height){
-	for (int row = 0; row < (textureRect.h / rowSize); row++)
+void TiledTexture::createClips(int width, int height){
+	for (int row = 0; row < (textureRect.h / height); row++)
 	{
-		for (int column = 0; column < (textureRect.w / columnSize); column++)
+		for (int column = 0; column < (textureRect.w / width); column++)
 		{
-			SDL_Rect clip{column * columnSize, row * rowSize, width, height};
+			SDL_Rect clip{column * width, row * height, width, height};
 			tiles.push_back(clip);
 		}
 	}
-	//std::cout << "Prepared:" << tile.size() <<"(" << tile.size() - 1 << ")" << "clips." << std::endl;
 }
 
 /*
@@ -64,7 +62,7 @@ const SDL_Rect* TiledTexture::getTile(int id){
 	if (id < tiles.size())
 		return &tiles[id];
 	else{
-		std::cout << "Texture with id " << id << "don't exist" << std::endl;
+		std::cout << "Texture with id " << id << "doesn't exist" << std::endl;
 		return &tiles[0];
 	}
 }

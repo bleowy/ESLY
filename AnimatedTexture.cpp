@@ -4,7 +4,7 @@
 	This class inherits from TiledTexture and uses its createClips method and vector called tiles.
 */
 AnimatedTexture::AnimatedTexture(std::string filePath, int width, int height, int number, int speed) : frame(width, height, number, speed)
-, TiledTexture(filePath, height, width, width, height) {
+, TiledTexture(filePath, height, width) {
 
 }
 
@@ -16,35 +16,39 @@ AnimatedTexture::AnimatedTexture(std::string filePath, int width, int height, in
 	Higher value = slower animation.
 */
 void AnimatedTexture::setSpeed(int speed){
-
+	frame.speed = speed;
 }
 
 /*
 	Stops the whole animation.
 */
 void AnimatedTexture::stop(){
-
+	frame.currentFrame = 0;
+	frame.pause = true;
 }
 /*
 	Pauses the animation.
 */
 void AnimatedTexture::pause(){
-
+	frame.pause = true;
 }
 
 /*
-	Resume/play the animation.
+	Play the animation.
 */
 void AnimatedTexture::play(){
-
+	frame.pause = false;
 }
+
 
 /*
 	Render and update.
 */
 void AnimatedTexture::update(){
-	++frame.currentFrame;
-	 if( frame.currentFrame / frame.speed >= frame.number ) { frame.currentFrame = 0; }
+	if(!frame.pause){
+		++frame.currentFrame;
+	 		if( frame.currentFrame / frame.speed >= frame.number ) { frame.currentFrame = 0; }
+	}
 }
 
 void AnimatedTexture::render(){
