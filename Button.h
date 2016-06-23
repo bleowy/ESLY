@@ -1,10 +1,15 @@
 #pragma once
 
-#include "InterfaceComponent.h"
+#include "GUI.h"
+#include "Rectangle.h"
+#include "TextTexture.h"
 
-class Button : public InterfaceComponent{
-public:
-	using InterfaceComponent::InterfaceComponent;
+class Button : public GUI{
 private:
-
+	Rectangle buttonRect;
+	TextTexture buttonText;
+public:
+	Button(int x, int y, int width, int height);
+	virtual void render();
+	virtual void update();
 };

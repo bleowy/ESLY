@@ -4,6 +4,7 @@
 #include "Button.h"
 #include "Sound.h"
 #include "AnimatedTexture.h"
+#include "Rectangle.h"
 
 #include <iostream>
 #include <string>
@@ -30,15 +31,14 @@ Game::~Game(){
 */
 
 void Game::loop(){
-	AnimatedTexture animation("Assets/Animations/campfire.png", 64, 64, 5, 5);
+	Button button(200, 150, 400, 200);
 	while (!isClosed) {
 		listenForEvent();
-		
 		activeScreen -> update();
-		animation.update();
 		graphics.startDrawing();
-		animation.render();
 		activeScreen -> render();
+		button.render();
+		SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255); // After using shapes we have to set render draw color to default.
 		graphics.endDrawing();
 	}
 }
@@ -48,11 +48,12 @@ void Game::loop(){
 */
 
 void Game::listenForEvent() {
-	while (SDL_PollEvent(&graphics.getEvent()) != 0)
+	while (SDL_PollEvent(&graphics.getEvent()))
 	{
 		if (graphics.getEvent().type == SDL_QUIT)
 			closeGame();
-		activeScreen -> handleEvent(&graphics.getEvent());
+		if(graphics.getEvent().type != 1024 && graphics.getEvent().type != 512) // 1024 mouse enters window, 512 leaves.
+			std::cout << "Event Occured:" << graphics.getEvent().type << std::endl;
 	}
 }
 

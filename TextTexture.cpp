@@ -4,13 +4,15 @@
 TextTexture::TextTexture(std::string path, std::string text, int size, int x, int y, int colorR, int colorG, int colorB) : Texture(x, y), path(path), text(text), size(size)
 {
 	color = {colorR, colorG, colorB, 1};
-	this->load();
+	load();
 	create();
 }
 
-
-TextTexture::~TextTexture()
+TextTexture::TextTexture(std::string text, int size, int x, int y, int colorR, int colorG, int colorB) : Texture(x,y), text(text), size(size)
 {
+	color = {colorR, colorG, colorB, 1};
+	load();
+	create();
 }
 
 void TextTexture::create()
@@ -67,4 +69,13 @@ void TextTexture::setColor(int colorR, int colorG, int colorB)
 {
 	color = { colorR, colorG, colorB };
 	create();
+}
+
+/*
+	Center the text relative to "parent" object.	
+*/
+void TextTexture::centerText(SDL_Rect centerTo){
+	std::cout << centerTo.x << centerTo.y << std::endl;
+	textureRect.y = centerTo.y + centerTo.h / 2 - textureRect.h / 2;
+	textureRect.x = centerTo.x + centerTo.w / 2 - textureRect.w / 2;
 }

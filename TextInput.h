@@ -1,6 +1,6 @@
 #pragma once
 
-#include "InterfaceComponent.h"
+#include "GUI.h"
 
 #include <SDL2/SDL.h>
 /*

@@ -13,11 +13,9 @@ private:
 	void listenForEvent();
 public:
 	static Graphics graphics;
-	
 	Game();
 	~Game();
 	void startGame();
 	void closeGame();
 	void setScreen(Screen*);
 };
-

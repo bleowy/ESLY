@@ -38,7 +38,8 @@ bool Graphics::initializeSDL()
             else
             {
                 SDL_SetRenderDrawColor(graphicsRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-
+                //
+                SDL_SetRenderDrawBlendMode(graphicsRenderer, SDL_BLENDMODE_BLEND);
                 int imgFlags = IMG_INIT_PNG;
                 if(!(IMG_Init(imgFlags)) & imgFlags)
                 {

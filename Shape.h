@@ -1,3 +1,5 @@
+#pragma once
+
 #include <SDL2/SDL.h>
 #include "Game.h"
 
@@ -9,4 +11,5 @@ protected:
 public:
 	Shape(int, int, int, int, int, int, int, int);
 	virtual void render();
+	SDL_Rect getRect();
 };
